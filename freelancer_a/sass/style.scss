@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Source+Sans+Pro:wght@300;400;700&display=swap');
+
+$gray: #303633;
+$lightgray: #f2f2f2;
+$green: #8bebcd;
+$pink: #9c7a97;
+$headings: 'Source Sans Pro', sans-serif;
+$text: 'Lato', sans-serif;
+$transition: 0.3 ease;
+$font: 16px;
+$white: #fff;
+
+/***************************************
+mixin
+***************************************/
+
+@mixin btn {
+    padding: 15px 40px;
+    border: none;
+    border: 2px solid $green;
+    background: transparent;
+    font-size: 1rem;
+    border-radius: 8px;
+    color: $green;
+    margin-top: 30px;
+    &:hover{
+        border: 2px solid $pink;
+        transition: $transition;
+        color: $pink;
+    }
+}
+
+@mixin line {
+    display: block;
+        height: 2px;
+        width: 100%;
+        background: $lightgray;
+        margin: 20px 0;
+        content: "";
+}
+
+@mixin line2 {
+    display: block;
+        height: 8px;
+        width: 100%;
+        background: $lightgray;
+        margin: 0 auto;
+        content: "";
+}
+
+
+/***************************************
+Basic styles
+***************************************/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: $text;
+    font-size: $font;
+    color: $gray;
+    line-height: 1.6;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: $headings;
+}
+
+h2{
+    font-size: 2.5rem;
+    font-weight: 700;
+    &::after{
+        display: block;
+        height: 2px;
+        width: 100px;
+        background: $pink;
+        margin: 35px 0;
+        content: "";
+    }
+}
+
+/***************************************
+asaid
+***************************************/
+aside{
+    flex: 1;
+    background-image: linear-gradient(to bottom ,rgba($gray, .9), rgba($pink, .9)), url(../img/bg.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 60px;
+    text-align: right;
+    @media(max-width: 760px) {
+        flex: 0 0 100%;
+        text-align: center;
+        align-items: center;
+        padding-right: 0;
+    }
+    img{
+        width: 40%;
+        border-radius: 50%;
+        border: $pink 5px solid;
+        @media(max-width: 760px) {
+            padding-right: none;
+            align-items: center;
+        }
+    }
+    h1{
+        font-weight: 300;
+        color: $white;
+        padding: 30px 0;
+       
+        span{
+            color:$green;
+            font-weight: 700;
+            font-style: italic;
+            letter-spacing: 2px;
+        }
+    }
+    
+    a{
+        color: $green;
+        margin-left: 20px;
+        font-size: 2rem;
+        &:hover{
+            color: $white;
+            transition: $transition;
+        }
+    }
+}
+
+/***************************************
+main
+***************************************/
+
+.main{
+    flex: 2;
+    padding: 40px;
+    overflow: scroll;
+    height: 100vh;
+    @media(max-width: 760px) {
+        flex: 0 0 100%;
+        text-align: center;
+        height: auto;
+    }
+    .about{
+        button{
+            @include btn;
+            @media(max-width: 760px) {
+                justify-content: center;
+            }
+        }
+
+        &::after{
+            @include line;
+            @media(max-width: 760px) {
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    .portofolio{
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 40px;
+
+            .col{
+                flex: 0 0 48%;
+                @media(max-width:760px) {
+                    flex: 0 0 100%;
+                }
+
+                img{
+                    width: 100%;
+
+                    &:hover {
+                        opacity: .6;
+                        transition: $transition;
+                        transform: scale(1.1);
+                    }
+                }
+                h4{
+                    color: $pink;
+                    font-size: 1.7rem;
+                    padding: 20px 0;
+                }
+
+                p{
+                    padding-bottom: 30px;
+                }
+            }
+
+
+        }
+            button{
+                @include btn;
+            }
+
+            &::after{
+                @include line;
+            }
+    }
+        footer{
+            padding-bottom: 50px;
+            
+            .row{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                margin-top: 50px; 
+                @media(max-width: 760px) {
+                    flex: 0 0 100%;
+                }
+                form{
+                    flex: 0 0 68%;
+                    display: flex;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    @media(max-width: 760px) {
+                        flex: 0 0 100%;
+                    }
+                    input{
+                        width: 48%;
+                        padding: 10px;
+                        background: $lightgray;
+                        border: none;
+                        
+                    }
+                    textarea{
+                        width: 100%;
+                        padding: 10px;
+                        background: $lightgray;
+                        border: none;
+                        margin-top: 25px;
+                        
+                    }
+                    button{
+                        @include btn;
+                        background: $pink;
+                        border: 2px solid $pink;
+                        color: $white;
+                        @media(max-width: 760px) {
+                            margin: 0 auto;
+                            margin-top: 20px;
+                        }
+                        &:hover{
+                            background: $green;
+                            border: 2px solid $green;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+
+            .contact{
+                flex: 0 0 28%;
+                @media(max-width: 760px) {
+                    flex: 0 0 100%;
+                }
+                ul{
+                    list-style: none;
+                    li{
+                        line-height: 2.5;
+                        font-size: 1.2rem;
+                        i{
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+}
+
+
